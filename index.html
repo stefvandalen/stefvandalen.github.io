@@ -513,11 +513,61 @@
 
   /* ── RESPONSIVE ── */
   @media (max-width: 900px) {
-    .hero { grid-template-columns: 1fr; }
+    .hero { grid-template-columns: 1fr; padding: 2.5rem 5% 2rem; }
     .hero-image { display: none; }
-    .diensten-grid, .mockups-grid, .steps { grid-template-columns: 1fr; }
-    .phone, .fb-wrap { margin: 0 auto; }
+    .diensten-grid, .steps { grid-template-columns: 1fr; }
     .form-grid { grid-template-columns: 1fr; }
+  }
+
+  @media (max-width: 680px) {
+    /* NAV */
+    nav { padding: 0 4%; height: 56px; }
+    .logo { font-size: 17px; white-space: nowrap; }
+    .nav-links { display: none; }
+    .nav-cta { font-size: 13px; padding: 7px 14px; white-space: nowrap; }
+
+    /* HERO */
+    .hero { padding: 2rem 4% 1.5rem; gap: 1.5rem; }
+    .hero h1 { font-size: 32px; }
+    .hero-sub { font-size: 15px; }
+    .hero-badges { gap: 1rem; flex-wrap: wrap; }
+
+    /* SECTIONS */
+    .section { padding: 2.5rem 4%; }
+    .section h2 { font-size: 26px; }
+    .section-intro { font-size: 14px; }
+
+    /* DIENSTEN */
+    .diensten-grid { gap: 1rem; }
+
+    /* PORTFOLIO */
+    .portfolio-bg { padding: 2.5rem 0; }
+    .portfolio-inner { padding: 0 4%; }
+    .mockups-grid {
+      grid-template-columns: 1fr;
+      gap: 2.5rem;
+      justify-items: center;
+    }
+
+    /* STEPS */
+    .steps { gap: 1rem; }
+
+    /* CONTACT */
+    .contact-section { padding: 2.5rem 4%; }
+    .contact-inner h2 { font-size: 26px; }
+    .contact-form { padding: 1.5rem; }
+    .form-grid { gap: 0.75rem; }
+
+    /* FOOTER */
+    footer { padding: 2rem 0 1.5rem; }
+    footer > div { flex-direction: column; gap: 1.5rem; }
+    footer > div > div:last-child { flex-direction: row; flex-wrap: wrap; gap: 1rem; }
+  }
+
+  @media (max-width: 400px) {
+    .logo { font-size: 15px; }
+    .hero h1 { font-size: 27px; }
+    .nav-cta { font-size: 12px; padding: 6px 10px; }
   }
 </style>
 </head>

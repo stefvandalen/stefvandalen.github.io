@@ -1,0 +1,1693 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Stef van Dalen — Social Media & Content</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Fraunces:ital,opsz,wght@0,9..144,700;1,9..144,400&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --green-dark: #1A4A35;
+    --green-mid: #2A7A5E;
+    --green-light: #E6F2ED;
+    --green-accent: #3DAA7A;
+    --text: #1A1A1A;
+    --text-muted: #5A6672;
+    --border: #D8E6DF;
+    --bg: #FFFFFF;
+    --bg-soft: #F7FAF8;
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'Inter', sans-serif;
+    color: var(--text);
+    background: var(--bg);
+    font-size: 16px;
+    line-height: 1.7;
+  }
+
+  /* ── NAV ── */
+  nav {
+    position: sticky; top: 0; z-index: 100;
+    background: rgba(255,255,255,0.95);
+    backdrop-filter: blur(8px);
+    border-bottom: 1px solid var(--border);
+    padding: 0 5%;
+    display: flex; align-items: center; justify-content: space-between;
+    height: 64px;
+  }
+  .logo {
+    font-family: 'Fraunces', serif;
+    font-size: 20px; font-weight: 700;
+    color: var(--text);
+    text-decoration: none;
+  }
+  .logo span { color: var(--green-mid); }
+  .nav-links {
+    display: flex; gap: 2rem; list-style: none;
+  }
+  .nav-links a {
+    text-decoration: none; font-size: 14px;
+    color: var(--text-muted); transition: color .2s;
+  }
+  .nav-links a:hover { color: var(--green-mid); }
+  .nav-cta {
+    background: var(--green-dark); color: #fff;
+    padding: 8px 20px; border-radius: 6px;
+    font-size: 14px; font-weight: 500;
+    text-decoration: none; transition: background .2s;
+  }
+  .nav-cta:hover { background: var(--green-mid); }
+
+  /* ── HERO ── */
+  .hero {
+    padding: 80px 5% 60px;
+    display: grid; grid-template-columns: 1fr 420px;
+    gap: 60px; align-items: center;
+    max-width: 1200px; margin: 0 auto;
+  }
+  .hero-eyebrow {
+    font-size: 11px; text-transform: uppercase;
+    letter-spacing: 2px; color: var(--green-mid);
+    font-weight: 600; margin-bottom: 1rem;
+  }
+  .hero h1 {
+    font-family: 'Fraunces', serif;
+    font-size: clamp(32px, 4vw, 52px);
+    font-weight: 700; line-height: 1.1;
+    letter-spacing: -1px; margin-bottom: 1.25rem;
+  }
+  .hero h1 em { font-style: italic; color: var(--green-mid); }
+  .hero-sub {
+    font-size: 17px; color: var(--text-muted);
+    margin-bottom: 2rem; max-width: 480px;
+  }
+  .hero-actions { display: flex; gap: 12px; flex-wrap: wrap; margin-bottom: 2.5rem; }
+  .btn-primary {
+    background: var(--green-dark); color: #fff;
+    padding: 12px 24px; border-radius: 8px;
+    font-size: 15px; font-weight: 500;
+    text-decoration: none; border: none; cursor: pointer;
+    transition: background .2s;
+  }
+  .btn-primary:hover { background: var(--green-mid); }
+  .btn-ghost {
+    background: transparent; color: var(--text);
+    padding: 12px 24px; border-radius: 8px;
+    font-size: 15px; font-weight: 500;
+    text-decoration: none; border: 1.5px solid var(--border); cursor: pointer;
+    transition: border-color .2s;
+  }
+  .btn-ghost:hover { border-color: var(--green-mid); }
+  .hero-badges {
+    display: flex; gap: 1.5rem; flex-wrap: wrap;
+  }
+  .hero-badge {
+    display: flex; align-items: center; gap: 6px;
+    font-size: 13px; color: var(--text-muted);
+  }
+  .hero-badge .dot {
+    width: 8px; height: 8px; border-radius: 50%;
+    background: var(--green-accent); flex-shrink: 0;
+  }
+
+  /* hero image placeholder */
+  .hero-image {
+    border-radius: 20px; overflow: hidden;
+    background: var(--green-light);
+    aspect-ratio: 4/3;
+    display: flex; align-items: center; justify-content: center;
+    position: relative;
+  }
+  .hero-image img { width: 100%; height: 100%; object-fit: cover; }
+  .hero-img-placeholder {
+    display: flex; flex-direction: column;
+    align-items: center; justify-content: center;
+    gap: 8px; color: var(--green-mid);
+    font-size: 13px; text-align: center; padding: 2rem;
+  }
+  .hero-img-placeholder svg { opacity: 0.4; }
+  .hero-badge-float {
+    position: absolute; bottom: 20px; left: 20px;
+    background: #fff; border-radius: 10px;
+    padding: 10px 14px; box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+    font-size: 13px;
+  }
+  .hero-badge-float strong { display: block; font-size: 20px; color: var(--green-dark); font-family: 'Fraunces', serif; }
+
+  /* ── DIVIDER ── */
+  .section-divider { border: none; border-top: 1px solid var(--border); max-width: 1200px; margin: 0 auto; }
+
+  /* ── SECTIONS ── */
+  .section { padding: 80px 5%; max-width: 1200px; margin: 0 auto; }
+  .section-label {
+    font-size: 11px; text-transform: uppercase;
+    letter-spacing: 2px; color: var(--green-mid);
+    font-weight: 600; margin-bottom: 0.5rem;
+    text-align: center;
+  }
+  .section h2 {
+    font-family: 'Fraunces', serif;
+    font-size: clamp(26px, 3vw, 38px);
+    font-weight: 700; letter-spacing: -0.5px;
+    text-align: center; margin-bottom: 0.75rem;
+  }
+  .section-intro {
+    text-align: center; color: var(--text-muted);
+    font-size: 16px; max-width: 560px;
+    margin: 0 auto 3rem;
+  }
+
+  /* ── DIENSTEN ── */
+  .diensten-grid {
+    display: grid; grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+  }
+  .dienst-card {
+    background: var(--bg-soft);
+    border: 1px solid var(--border);
+    border-radius: 16px; padding: 2rem;
+    transition: box-shadow .2s, transform .2s;
+  }
+  .dienst-card:hover {
+    box-shadow: 0 8px 30px rgba(42,122,94,0.12);
+    transform: translateY(-2px);
+  }
+  .dienst-icon {
+    width: 44px; height: 44px; border-radius: 10px;
+    background: var(--green-light);
+    display: flex; align-items: center; justify-content: center;
+    margin-bottom: 1rem;
+    color: var(--green-mid); font-size: 20px;
+  }
+  .dienst-card h3 { font-size: 17px; font-weight: 600; margin-bottom: 0.6rem; }
+  .dienst-card p { font-size: 14px; color: var(--text-muted); line-height: 1.65; margin-bottom: 1rem; }
+  .dienst-items { list-style: none; }
+  .dienst-items li {
+    font-size: 13px; color: var(--text-muted);
+    padding: 3px 0;
+    display: flex; align-items: center; gap: 6px;
+  }
+  .dienst-items li::before {
+    content: "";
+    width: 5px; height: 5px; border-radius: 50%;
+    background: var(--green-accent); flex-shrink: 0;
+  }
+  .dienst-more {
+    display: inline-block; margin-top: 1rem;
+    font-size: 13px; color: var(--green-mid);
+    font-weight: 500; text-decoration: none;
+    border-bottom: 1px solid transparent;
+    transition: border-color .2s;
+  }
+  .dienst-more:hover { border-color: var(--green-mid); }
+
+  /* ── PORTFOLIO MOCKUPS ── */
+  .portfolio-bg {
+    background: var(--bg-soft);
+    padding: 80px 0;
+    border-top: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
+  }
+  .portfolio-inner { max-width: 1200px; margin: 0 auto; padding: 0 5%; }
+  .mockups-grid {
+    display: grid; grid-template-columns: repeat(3, 1fr);
+    gap: 2rem; align-items: start;
+  }
+  .mockup-wrap { display: flex; flex-direction: column; align-items: center; }
+
+  /* phone shell */
+  .phone {
+    width: 180px;
+    background: #111;
+    border-radius: 28px;
+    padding: 10px 6px 14px;
+    border: 3px solid #2A2A2A;
+    box-shadow: 0 20px 60px rgba(0,0,0,0.25);
+    position: relative;
+  }
+  .phone-notch {
+    display: flex; justify-content: center;
+    margin-bottom: 6px;
+  }
+  .phone-notch-pill {
+    width: 48px; height: 5px;
+    background: #333; border-radius: 3px;
+  }
+  .phone-screen {
+    border-radius: 18px; overflow: hidden;
+  }
+
+  /* Reel – chocolade */
+  .reel-screen {
+    background: linear-gradient(165deg, #2C1500 0%, #5A2D00 45%, #1E3A15 100%);
+    aspect-ratio: 9/16;
+    display: flex; flex-direction: column;
+    justify-content: flex-end;
+    padding: 12px 10px 12px;
+    position: relative; overflow: hidden;
+  }
+  .reel-grain {
+    position: absolute; inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.06'/%3E%3C/svg%3E");
+    pointer-events: none;
+  }
+  .reel-label {
+    position: absolute; top: 10px; left: 10px;
+    background: rgba(255,255,255,0.18);
+    color: #fff; font-size: 9px; font-weight: 600;
+    padding: 3px 9px; border-radius: 20px;
+    backdrop-filter: blur(4px);
+    letter-spacing: 0.5px;
+  }
+  .reel-side {
+    position: absolute; right: 8px; top: 50%;
+    transform: translateY(-40%);
+    display: flex; flex-direction: column;
+    align-items: center; gap: 14px;
+  }
+  .reel-action {
+    color: #fff; text-align: center; font-size: 10px;
+  }
+  .reel-action svg { display: block; margin: 0 auto 2px; }
+  .reel-bottom { position: relative; color: #fff; }
+  .reel-big {
+    font-family: 'Fraunces', serif;
+    font-size: 22px; font-weight: 700;
+    color: #F2C97A; line-height: 1; margin-bottom: 4px;
+  }
+  .reel-user { font-size: 10px; font-weight: 600; margin-bottom: 3px; }
+  .reel-caption { font-size: 9px; color: rgba(255,255,255,0.8); line-height: 1.4; }
+  .reel-progress { display: flex; gap: 2px; margin-top: 10px; }
+  .reel-bar { height: 2px; flex: 1; background: rgba(255,255,255,0.25); border-radius: 1px; }
+  .reel-bar.on { background: #fff; }
+
+  /* Story – recruiter */
+  .story-screen {
+    background: linear-gradient(150deg, #0D1B2A 0%, #1A2E45 60%, #0A1E35 100%);
+    aspect-ratio: 9/16;
+    display: flex; flex-direction: column;
+    padding: 10px;
+    position: relative; overflow: hidden;
+  }
+  .story-bars { display: flex; gap: 3px; margin-bottom: 8px; }
+  .story-bar { height: 2px; flex: 1; background: rgba(255,255,255,0.3); border-radius: 1px; }
+  .story-bar.done { background: #fff; }
+  .story-header { display: flex; align-items: center; gap: 7px; margin-bottom: auto; }
+  .story-ava {
+    width: 26px; height: 26px; border-radius: 50%;
+    background: #C0392B; border: 2px solid #E74C3C;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 9px; color: #fff; font-weight: 700;
+  }
+  .story-name { color: #fff; font-size: 10px; font-weight: 600; }
+  .story-time { color: rgba(255,255,255,0.5); font-size: 9px; margin-left: auto; }
+  .story-hero-text {
+    color: #fff; text-align: center; margin: 12px 0 10px;
+  }
+  .story-hero-text .big {
+    font-family: 'Fraunces', serif;
+    font-size: 26px; font-weight: 700; line-height: 1.1;
+  }
+  .story-hero-text .big em { font-style: italic; color: #FF6B35; }
+  .story-hero-text .sub {
+    font-size: 10px; color: rgba(255,255,255,0.6);
+    margin-top: 4px;
+  }
+  .story-card {
+    background: rgba(255,255,255,0.1);
+    border: 1px solid rgba(255,255,255,0.15);
+    border-radius: 10px; padding: 10px;
+    backdrop-filter: blur(6px);
+  }
+  .story-eyebrow {
+    font-size: 8px; text-transform: uppercase;
+    letter-spacing: 1px; color: #FF6B35;
+    font-weight: 700; margin-bottom: 4px;
+  }
+  .story-title { color: #fff; font-size: 12px; font-weight: 700; line-height: 1.2; margin-bottom: 6px; }
+  .story-perks { margin-bottom: 8px; }
+  .story-perk { font-size: 9px; color: rgba(255,255,255,0.8); padding: 2px 0; }
+  .story-perk::before { content: "✓ "; color: #FF6B35; }
+  .story-cta {
+    background: #C0392B; color: #fff;
+    text-align: center; border-radius: 6px;
+    padding: 6px; font-size: 10px; font-weight: 700;
+  }
+  .story-swipe {
+    color: rgba(255,255,255,0.4);
+    font-size: 9px; text-align: center; margin-top: 6px;
+  }
+
+  /* FB ad */
+  .fb-wrap {
+    background: #F0F2F5; border-radius: 14px;
+    padding: 8px; width: 200px;
+  }
+  .fb-card {
+    background: #fff; border-radius: 10px;
+    overflow: hidden; border: 1px solid #ddd;
+    font-family: -apple-system, 'Helvetica Neue', sans-serif;
+  }
+  .fb-header { padding: 8px 10px; display: flex; align-items: center; gap: 8px; }
+  .fb-ava {
+    width: 32px; height: 32px; border-radius: 50%;
+    background: #F39C12;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 12px; color: #fff; font-weight: 700;
+    flex-shrink: 0;
+  }
+  .fb-meta-name { font-size: 12px; font-weight: 700; color: #050505; }
+  .fb-meta-sub { font-size: 10px; color: #65676B; }
+  .fb-copy { padding: 0 10px 8px; font-size: 12px; color: #050505; line-height: 1.5; }
+  .fb-image {
+    background: linear-gradient(135deg, #1A3A5C 0%, #2E5E8E 50%, #1A3A5C 100%);
+    height: 130px; display: flex; flex-direction: column;
+    align-items: center; justify-content: center;
+    position: relative; overflow: hidden;
+  }
+  .fb-img-headline {
+    color: #fff; font-size: 18px; font-weight: 700;
+    font-family: 'Fraunces', serif; text-align: center;
+    line-height: 1.15;
+  }
+  .fb-img-sub { color: rgba(255,255,255,0.8); font-size: 10px; text-align: center; margin-top: 4px; }
+  .fb-badge {
+    position: absolute; bottom: 8px; right: 8px;
+    background: #F39C12; color: #fff;
+    font-size: 9px; font-weight: 700;
+    padding: 3px 8px; border-radius: 4px;
+  }
+  .fb-link-bar {
+    padding: 6px 10px;
+    display: flex; justify-content: space-between; align-items: center;
+    background: #F0F2F5;
+  }
+  .fb-link-domain { font-size: 10px; color: #65676B; text-transform: uppercase; }
+  .fb-link-title { font-size: 12px; font-weight: 700; color: #050505; }
+  .fb-cta-btn {
+    background: #E4E6EB; color: #050505;
+    border: none; border-radius: 6px;
+    padding: 6px 12px; font-size: 12px; font-weight: 600;
+    cursor: pointer; margin: 6px 10px;
+    width: calc(100% - 20px);
+  }
+  .fb-reactions {
+    display: flex; gap: 0.75rem; padding: 6px 10px;
+    border-top: 1px solid #E4E6EB;
+  }
+  .fb-reaction { font-size: 11px; color: #65676B; }
+  .fb-dot {
+    width: 7px; height: 7px; border-radius: 50%;
+    background: rgba(0,0,0,0.2); cursor: pointer; transition: background .2s;
+  }
+  .fb-dot.active { background: var(--green-dark); }
+
+  /* labels onder mockups */
+  .mockup-label {
+    margin-top: 12px; text-align: center;
+  }
+  .mockup-label strong { display: block; font-size: 13px; font-weight: 600; }
+  .mockup-label span { font-size: 11px; color: var(--text-muted); }
+
+  /* ── HOW IT WORKS ── */
+  .steps {
+    display: grid; grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem; margin-top: 2rem;
+  }
+  .step {
+    text-align: center; padding: 2rem 1.5rem;
+    background: var(--bg-soft); border-radius: 16px;
+    border: 1px solid var(--border);
+  }
+  .step-num {
+    width: 44px; height: 44px; border-radius: 50%;
+    background: var(--green-light); color: var(--green-dark);
+    font-family: 'Fraunces', serif; font-size: 18px; font-weight: 700;
+    display: flex; align-items: center; justify-content: center;
+    margin: 0 auto 1rem;
+  }
+  .step h3 { font-size: 16px; font-weight: 600; margin-bottom: 0.4rem; }
+  .step p { font-size: 14px; color: var(--text-muted); }
+
+  /* ── CONTACT ── */
+  .contact-section {
+    background: var(--green-dark);
+    padding: 80px 5%;
+  }
+  .contact-inner {
+    max-width: 760px; margin: 0 auto;
+    text-align: center;
+  }
+  .contact-inner .section-label { color: #9FCFBB; }
+  .contact-inner h2 { color: #fff; margin-bottom: 0.5rem; }
+  .contact-inner p { color: rgba(255,255,255,0.7); margin-bottom: 2.5rem; font-size: 16px; }
+  .contact-form {
+    background: #fff; border-radius: 16px;
+    padding: 2.5rem; text-align: left;
+  }
+  .step-tabs {
+    display: flex; gap: 8px; margin-bottom: 2rem;
+  }
+  .step-tab {
+    flex: 1; padding: 10px 8px;
+    border-radius: 8px; font-size: 13px; font-weight: 500;
+    border: 1.5px solid var(--border);
+    background: var(--bg-soft); color: var(--text-muted);
+    cursor: pointer; text-align: center; transition: all .2s;
+  }
+  .step-tab.active {
+    background: var(--green-dark); color: #fff;
+    border-color: var(--green-dark);
+  }
+  .form-grid {
+    display: grid; grid-template-columns: 1fr 1fr;
+    gap: 1rem; margin-bottom: 1rem;
+  }
+  .form-group { display: flex; flex-direction: column; gap: 5px; }
+  .form-group.full { grid-column: 1 / -1; }
+  .form-group label { font-size: 12px; font-weight: 600; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.5px; }
+  .form-group input,
+  .form-group select,
+  .form-group textarea {
+    padding: 10px 12px; border-radius: 8px;
+    border: 1.5px solid var(--border);
+    font-size: 14px; font-family: inherit;
+    color: var(--text); background: var(--bg);
+    transition: border-color .2s;
+    outline: none;
+  }
+  .form-group input:focus,
+  .form-group select:focus,
+  .form-group textarea:focus { border-color: var(--green-mid); }
+  .form-group textarea { resize: vertical; }
+  .form-submit {
+    width: 100%; background: var(--green-dark); color: #fff;
+    border: none; padding: 14px; border-radius: 10px;
+    font-size: 15px; font-weight: 600; cursor: pointer;
+    transition: background .2s; margin-top: 0.5rem;
+    font-family: inherit;
+  }
+  .form-submit:hover { background: var(--green-mid); }
+  .form-privacy {
+    font-size: 11px; color: var(--text-muted);
+    text-align: center; margin-top: 0.75rem;
+    display: flex; align-items: center; justify-content: center; gap: 4px;
+  }
+
+  /* ── FOOTER ── */
+  footer {
+    background: #111; color: rgba(255,255,255,0.5);
+    padding: 3rem 0 2rem;
+    font-size: 13px;
+  }
+  .footer-logo {
+    font-family: 'Fraunces', serif;
+    font-size: 17px; color: #fff; font-weight: 700;
+  }
+  .footer-logo span { color: var(--green-accent); }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 900px) {
+    .hero { grid-template-columns: 1fr; }
+    .hero-image { display: none; }
+    .diensten-grid, .mockups-grid, .steps { grid-template-columns: 1fr; }
+    .phone, .fb-wrap { margin: 0 auto; }
+    .form-grid { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="#" class="logo">Stef van Dalen<span>.</span></a>
+  <ul class="nav-links">
+    <li><a href="#diensten">Diensten</a></li>
+    <li><a href="#werk">Werk</a></li>
+    <li><a href="#werkwijze">Werkwijze</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+  <a href="#contact" class="nav-cta">Kennismaken →</a>
+</nav>
+
+<!-- HERO -->
+<section style="background: var(--bg);">
+  <div class="hero">
+    <div>
+      <p class="hero-eyebrow">Freelance Social Media &amp; Content</p>
+      <h1>Jouw boodschap, helder verteld en <em>zichtbaar</em> voor de juiste doelgroep</h1>
+      <p class="hero-sub">Ik neem het content- en socialemediawerk volledig uit handen — van strategie tot publicatie — zodat jij je kunt focussen op je bedrijf.</p>
+      <div class="hero-actions">
+        <a href="#contact" class="btn-primary">Maak kennis →</a>
+        <a href="#werk" class="btn-ghost">Bekijk mijn werk</a>
+      </div>
+      <div class="hero-badges">
+        <span class="hero-badge"><span class="dot"></span> Creatief</span>
+        <span class="hero-badge"><span class="dot"></span> Snel &amp; flexibel</span>
+        <span class="hero-badge"><span class="dot"></span> Heldere communicatie</span>
+      </div>
+    </div>
+    <div class="hero-image">
+      <div class="hero-img-placeholder">
+        <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+          <rect x="3" y="3" width="18" height="18" rx="3"/>
+          <circle cx="8.5" cy="8.5" r="1.5"/>
+          <polyline points="21 15 16 10 5 21"/>
+        </svg>
+        <span>Voeg hier jouw foto toe</span>
+      </div>
+      <div class="hero-badge-float">
+        <strong>10+ jaar ervaring</strong>
+        marketing &amp; communicatie
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="section-divider">
+
+<!-- DIENSTEN -->
+<section id="diensten" class="section">
+  <p class="section-label">Wat ik doe</p>
+  <h2>Diensten die jouw bedrijf verder helpen</h2>
+  <p class="section-intro">Van strategie tot creatie, ik help jouw bedrijf groeien.</p>
+  <div class="diensten-grid">
+
+    <div class="dienst-card">
+      <div class="dienst-icon">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/>
+          <circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/>
+        </svg>
+      </div>
+      <h3>Social media creatie</h3>
+      <p>Reels, stories, carousels en graphics die opvallen en passen bij jouw merk.</p>
+      <ul class="dienst-items">
+        <li>Instagram Reels &amp; Stories</li>
+        <li>Carousels &amp; afbeeldingen</li>
+        <li>Facebook ads</li>
+      </ul>
+      <a href="#contact" class="dienst-more">Meer zichtbaarheid &amp; engagement →</a>
+    </div>
+
+    <div class="dienst-card">
+      <div class="dienst-icon">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M3 3h18v4H3z"/><path d="M3 10h12"/><path d="M3 14h8"/><circle cx="19" cy="17" r="3"/>
+          <path d="m21.5 19.5 1.5 1.5"/>
+        </svg>
+      </div>
+      <h3>Social Media Management</h3>
+      <p>Ik beheer jouw kanalen volledig: van contentplanning tot advertenties en rapportages.</p>
+      <ul class="dienst-items">
+        <li>Advertenties (Meta, LinkedIn)</li>
+        <li>Contentkalender &amp; planning</li>
+        <li>Community management</li>
+        <li>Maandelijkse rapportage</li>
+      </ul>
+      <a href="#contact" class="dienst-more">Van inzicht naar groei →</a>
+    </div>
+
+    <div class="dienst-card">
+      <div class="dienst-icon">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"/>
+        </svg>
+      </div>
+      <h3>Blogs &amp; artikelen</h3>
+      <p>Goed geschreven content die gevonden wordt, geloofwaardigheid opbouwt en aanspoort tot actie.</p>
+      <ul class="dienst-items">
+        <li>SEO-blogs &amp; artikelen</li>
+        <li>Websiteteksten</li>
+        <li>Nieuwsbrieven</li>
+        <li>Whitepapers</li>
+      </ul>
+      <a href="#contact" class="dienst-more">Meer zichtbaarheid &amp; autoriteit →</a>
+    </div>
+
+  </div>
+</section>
+
+<!-- PORTFOLIO -->
+<div id="werk" class="portfolio-bg">
+  <div class="portfolio-inner">
+    <p class="section-label" style="text-align:center;">Voorbeelden</p>
+    <h2 style="font-family:'Fraunces',serif; font-size:clamp(26px,3vw,38px); font-weight:700; text-align:center; margin-bottom:0.5rem; letter-spacing:-0.5px;">Zo ziet mijn werk eruit in de praktijk</h2>
+    <p style="text-align:center; color:var(--text-muted); margin-bottom:3rem; font-size:16px;">Jouw branding en huisstijl als uitgangspunt — elk stuk content herkenbaar en on-brand.</p>
+
+    <style>
+      /* ── MOCKUP GRID ── */
+      .mockups-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr;
+        gap: 2rem;
+        align-items: start;
+        justify-items: center;
+      }
+      .mockup-wrap { display:flex; flex-direction:column; align-items:center; width:100%; }
+      .mockup-label { margin-top:14px; text-align:center; }
+      .mockup-label strong { display:block; font-size:13px; font-weight:600; color:var(--text); }
+      .mockup-label span { font-size:11px; color:var(--text-muted); }
+
+      /* ── IPHONE SHELL ── */
+      .iphone {
+        width: 195px;
+        background: #1A1A1C;
+        border-radius: 40px;
+        padding: 10px 6px 14px;
+        box-shadow:
+          0 0 0 1px #3A3A3C,
+          inset 0 0 0 1px rgba(255,255,255,0.07),
+          0 24px 60px rgba(0,0,0,0.5);
+      }
+      .iphone-top {
+        display: flex; justify-content: space-between; align-items: center;
+        padding: 4px 14px 0;
+        height: 24px;
+      }
+      .iphone-time { color: #fff; font-size: 10px; font-weight: 600; font-family: -apple-system, sans-serif; }
+      .iphone-icons { display:flex; align-items:center; gap:4px; }
+      .iphone-island {
+        position: absolute; left: 50%; transform: translateX(-50%);
+        top: 14px;
+        width: 72px; height: 12px;
+        background: #000; border-radius: 20px;
+      }
+      .iphone-top-wrap { position: relative; height: 28px; }
+      .iphone-screen {
+        border-radius: 28px;
+        overflow: hidden;
+        background: #000;
+        cursor: pointer;
+        user-select: none;
+        -webkit-user-select: none;
+      }
+
+      /* ── INSTAGRAM REEL ── */
+      .ig-reel {
+        aspect-ratio: 9/16;
+        position: relative;
+        overflow: hidden;
+        background: #000;
+        font-family: -apple-system, 'Helvetica Neue', sans-serif;
+        contain: layout;
+      }
+      /* status bar */
+      .ig-statusbar {
+        position: absolute; top: 0; left: 0; right: 0;
+        height: 18px; padding: 3px 12px 0;
+        display: flex; justify-content: space-between; align-items: center;
+        z-index: 30;
+      }
+      .ig-statusbar-time { color:#fff; font-size:9px; font-weight:700; letter-spacing:0.2px; }
+      .ig-statusbar-icons { display:flex; align-items:center; gap:3px; }
+      /* progress bars */
+      .ig-stories-bar {
+        position: absolute; top: 18px; left: 0; right: 0;
+        padding: 4px 6px 0;
+        display: flex; gap: 2px;
+        z-index: 25;
+      }
+      .ig-sbar { height: 2px; flex:1; background:rgba(255,255,255,0.4); border-radius:2px; }
+      .ig-sbar-fill { height:2px; background:#fff; border-radius:2px; }
+      /* user row */
+      .ig-userrow {
+        position: absolute; top: 26px; left: 0; right: 0;
+        padding: 4px 8px;
+        display: flex; align-items: center; gap: 6px;
+        z-index: 25;
+      }
+      .ig-ava-wrap {
+        width: 28px; height: 28px; border-radius: 50%;
+        background: linear-gradient(45deg, #f09433, #e6683c, #dc2743, #cc2366, #bc1888);
+        padding: 1.5px; flex-shrink: 0;
+      }
+      .ig-ava-inner {
+        width: 100%; height: 100%; border-radius: 50%;
+        border: 1.5px solid #000;
+        display: flex; align-items:center; justify-content:center;
+        font-size: 9px; font-weight:700; color:#fff;
+        overflow: hidden;
+      }
+      .ig-uname { color:#fff; font-size:11px; font-weight:600; flex:1; text-shadow:0 0 4px rgba(0,0,0,0.5); max-width:90px; overflow:hidden; text-overflow:ellipsis; white-space:nowrap; }
+      .ig-follow {
+        background:transparent; border:1px solid rgba(255,255,255,0.85);
+        color:#fff; font-size:10px; font-weight:700;
+        padding:3px 10px; border-radius:6px; cursor:pointer;
+        letter-spacing:0.2px;
+      }
+      .ig-morebt { color:rgba(255,255,255,0.9); font-size:18px; font-weight:700; line-height:1; padding-left:4px; }
+      /* right action buttons */
+      .ig-right-actions {
+        position: absolute; right:6px; bottom:58px;
+        display:flex; flex-direction:column; align-items:center; gap:14px;
+        z-index:25;
+      }
+      .ig-btn { color:#fff; text-align:center; cursor:pointer; filter:drop-shadow(0 1px 2px rgba(0,0,0,0.4)); }
+      .ig-btn svg { display:block; margin:0 auto 2px; }
+      .ig-btn-label { font-size:9px; font-weight:600; letter-spacing:0.2px; }
+      /* bottom caption area */
+      .ig-caption-area {
+        position: absolute; bottom:42px; left:0; right:48px;
+        padding: 30px 10px 6px;
+        background: linear-gradient(to top, rgba(0,0,0,0.65) 0%, transparent 100%);
+        z-index:25;
+      }
+      .ig-cap-user { color:#fff; font-size:11px; font-weight:700; margin-bottom:2px; text-shadow:0 1px 2px rgba(0,0,0,0.4); }
+      .ig-cap-text { color:rgba(255,255,255,0.88); font-size:9.5px; line-height:1.45; word-break:break-word; text-shadow:0 1px 2px rgba(0,0,0,0.3); }
+      /* music bar at bottom of caption */
+      .ig-music-bar {
+        position: absolute; bottom:42px; right:6px; left:auto;
+        z-index:25;
+        display:flex; align-items:center;
+      }
+      .ig-music-disc {
+        width:22px; height:22px; border-radius:50%;
+        background: conic-gradient(#888 0deg, #555 120deg, #888 240deg, #555 360deg);
+        border:2px solid rgba(255,255,255,0.3);
+        display:flex; align-items:center; justify-content:center;
+      }
+      /* IG bottom nav bar */
+      .ig-navbar {
+        position:absolute; bottom:0; left:0; right:0;
+        height:42px;
+        background: rgba(0,0,0,0.85);
+        border-top: 0.5px solid rgba(255,255,255,0.08);
+        display:flex; align-items:center; justify-content:space-around;
+        z-index:30; padding:0 4px;
+      }
+      .ig-nb-btn { display:flex; flex-direction:column; align-items:center; gap:2px; color:rgba(255,255,255,0.7); cursor:pointer; }
+      .ig-nb-active { color:#fff; }
+      .ig-nb-avatar { width:20px; height:20px; border-radius:50%; background:#555; border:1.5px solid rgba(255,255,255,0.6); }
+      /* tap zones */
+      .tap-l { position:absolute; left:0; top:0; width:38%; height:100%; z-index:20; cursor:pointer; }
+      .tap-r { position:absolute; right:0; top:0; width:38%; height:100%; z-index:20; cursor:pointer; }
+
+      /* ── INSTAGRAM STORY ── */
+      .ig-story {
+        aspect-ratio: 9/16;
+        position:relative; overflow:hidden;
+        background:#000;
+        font-family: -apple-system, 'Helvetica Neue', sans-serif;
+        contain: layout;
+      }
+      .ig-story-statusbar {
+        position:absolute; top:0; left:0; right:0;
+        height:18px; padding:3px 12px 0;
+        display:flex; justify-content:space-between; align-items:center;
+        z-index:30;
+      }
+      .ig-story-progbars {
+        position:absolute; top:18px; left:0; right:0;
+        padding:4px 6px 0; display:flex; gap:2px; z-index:25;
+      }
+      .ig-story-userrow {
+        position:absolute; top:26px; left:0; right:0;
+        padding:4px 8px; display:flex; align-items:center; gap:6px; z-index:25;
+        white-space:nowrap; overflow:hidden;
+      }
+      .ig-story-replybar {
+        position:absolute; bottom:0; left:0; right:0;
+        padding:6px 8px 8px;
+        display:flex; align-items:center; gap:8px; z-index:25;
+      }
+      .ig-story-input {
+        flex:1; border:1.5px solid rgba(255,255,255,0.6);
+        border-radius:22px; padding:6px 12px;
+        color:rgba(255,255,255,0.75); font-size:10px;
+        background:transparent; overflow:hidden; text-overflow:ellipsis; white-space:nowrap;
+      }
+      .ig-story-icon { color:rgba(255,255,255,0.9); cursor:pointer; }
+
+      /* ── FACEBOOK ── */
+      .fb-phone {
+        width: 195px;
+        background: #1A1A1C;
+        border-radius: 40px;
+        padding: 10px 6px 14px;
+        box-shadow:
+          0 0 0 1px #3A3A3C,
+          inset 0 0 0 1px rgba(255,255,255,0.07),
+          0 24px 60px rgba(0,0,0,0.5);
+      }
+      .fb-screen {
+        border-radius: 28px; overflow:hidden;
+        background:#fff; cursor:pointer;
+        font-family: 'Helvetica Neue', Arial, sans-serif;
+        height: 420px; overflow-y: scroll;
+        -webkit-overflow-scrolling: touch;
+        scrollbar-width: none;
+      }
+      .fb-screen::-webkit-scrollbar { display: none; }
+      /* FB status bar */
+      .fb-statusbar {
+        background:#fff; padding:4px 12px 2px;
+        display:flex; justify-content:space-between; align-items:center;
+      }
+      .fb-sb-time { font-size:9px; font-weight:700; color:#050505; }
+      .fb-sb-icons { display:flex; gap:3px; align-items:center; }
+      /* FB top nav */
+      .fb-topnav {
+        background:#fff;
+        border-bottom:1px solid #E4E6EB;
+        padding:4px 10px 5px;
+        display:flex; align-items:center; gap:6px;
+      }
+      .fb-logo { font-size:22px; font-weight:900; color:#1877F2; font-family:Georgia,serif; line-height:1; }
+      .fb-search-pill {
+        flex:1; background:#F0F2F5; border-radius:20px;
+        padding:5px 10px; display:flex; align-items:center; gap:5px;
+        font-size:10px; color:#65676B;
+      }
+      .fb-nav-icons { display:flex; gap:8px; align-items:center; }
+      .fb-nav-icon {
+        width:26px; height:26px; border-radius:50%;
+        background:#E4E6EB; display:flex; align-items:center; justify-content:center;
+        font-size:12px; color:#050505; cursor:pointer;
+      }
+      /* FB tab bar */
+      .fb-tabbar {
+        background:#fff; border-bottom:1px solid #E4E6EB;
+        display:flex; justify-content:space-around;
+        padding:0;
+      }
+      .fb-tab {
+        flex:1; padding:8px 0; display:flex; justify-content:center;
+        border-bottom:2px solid transparent; cursor:pointer;
+      }
+      .fb-tab-active { border-bottom:2px solid #1877F2; }
+      /* FB post */
+      .fb-post-header {
+        padding:8px 10px 4px; display:flex; align-items:center; gap:8px;
+      }
+      .fb-page-ava {
+        width:32px; height:32px; border-radius:6px;
+        display:flex; align-items:center; justify-content:center;
+        font-size:12px; font-weight:700; color:#fff;
+        flex-shrink:0;
+      }
+      .fb-page-name { font-size:12px; font-weight:700; color:#050505; line-height:1.2; }
+      .fb-page-meta { font-size:10px; color:#65676B; display:flex; align-items:center; gap:3px; }
+      .fb-post-dots { margin-left:auto; color:#65676B; font-size:16px; font-weight:700; cursor:pointer; }
+      .fb-post-text {
+        padding:0 10px 6px; font-size:11.5px; color:#050505;
+        line-height:1.5; word-break:break-word;
+      }
+      .fb-img-wrap {
+        width:100%; aspect-ratio:1/1; position:relative; overflow:hidden;
+        display:flex; align-items:center; justify-content:center;
+      }
+      .fb-img-wrap svg { position:absolute; inset:0; width:100%; height:100%; }
+      .fb-img-txt { position:relative; z-index:2; text-align:center; padding:0 10px; }
+      .fb-like-bar {
+        padding:5px 10px 4px;
+        display:flex; align-items:center; justify-content:space-between;
+        font-size:10.5px; color:#65676B;
+        border-bottom:1px solid #E4E6EB;
+      }
+      .fb-reacts { display:flex; }
+      .fb-react-ico {
+        width:16px; height:16px; border-radius:50%;
+        border:1.5px solid #fff; margin-left:-3px;
+        display:inline-flex; align-items:center; justify-content:center;
+        font-size:9px; background:#fff;
+      }
+      .fb-react-ico:first-child { margin-left:0; }
+      .fb-actions {
+        display:flex; border-top:none;
+      }
+      .fb-action-btn {
+        flex:1; padding:6px 2px;
+        display:flex; align-items:center; justify-content:center; gap:4px;
+        font-size:11px; font-weight:600; color:#65676B;
+        cursor:pointer; background:none; border:none; font-family:inherit;
+      }
+      .fb-action-btn:hover { background:#F0F2F5; }
+      .fb-link-block {
+        background:#F0F2F5; border-top:1px solid #E4E6EB;
+        padding:6px 10px;
+      }
+      .fb-link-url { font-size:9px; color:#65676B; text-transform:uppercase; letter-spacing:0.4px; margin-bottom:1px; }
+      .fb-link-ttl { font-size:11.5px; font-weight:700; color:#050505; line-height:1.25; word-break:break-word; }
+      .fb-link-desc { font-size:10px; color:#65676B; word-break:break-word; margin-top:1px; }
+      .fb-cta-row { padding:5px 10px 6px; }
+      .fb-cta-pill {
+        width:100%; background:#E4E6EB; border:none;
+        border-radius:6px; padding:7px 10px;
+        font-size:12px; font-weight:700; color:#050505;
+        cursor:pointer; font-family:inherit; text-align:center; display:block;
+      }
+      /* FB bottom nav */
+      .fb-bottomnav {
+        background:#fff; border-top:1px solid #E4E6EB;
+        display:flex; justify-content:space-around; padding:4px 0 6px;
+      }
+      .fb-bnav-btn {
+        flex:1; display:flex; flex-direction:column; align-items:center; gap:1px;
+        font-size:9px; color:#65676B; cursor:pointer; padding:2px 0;
+      }
+      .fb-bnav-active { color:#1877F2; border-top:2px solid #1877F2; }
+      /* slide dots */
+      .fb-slide-dots {
+        display:flex; justify-content:center; gap:5px; padding:7px 0 4px;
+        background:#F7F8FA; border-top:1px solid #E4E6EB;
+        border-radius:0 0 22px 22px;
+      }
+      .fb-dot { width:6px; height:6px; border-radius:50%; background:rgba(0,0,0,0.18); cursor:pointer; transition:background .2s; }
+      .fb-dot.active { background:#1877F2; }
+    </style>
+
+    <div class="mockups-grid">
+
+      <!-- 1: Instagram Reel – Pura Chocolade -->
+      <div class="mockup-wrap">
+        <div class="iphone">
+          <div class="iphone-notch"><div class="iphone-island"></div></div>
+          <div class="iphone-screen">
+            <div style="position:relative;">
+
+              <!-- SLIDE 1 -->
+              <div class="ig-reel" id="r1-s1">
+                <div class="ig-reel-bg">
+                  <svg viewBox="0 0 181 322" xmlns="http://www.w3.org/2000/svg" style="position:absolute;inset:0;width:100%;height:100%">
+                    <defs>
+                      <radialGradient id="rg1" cx="48%" cy="58%" r="55%"><stop offset="0%" stop-color="#2E1200"/><stop offset="100%" stop-color="#080300"/></radialGradient>
+                      <radialGradient id="cupglow" cx="50%" cy="50%" r="50%"><stop offset="0%" stop-color="#B06020" stop-opacity="0.35"/><stop offset="100%" stop-color="#B06020" stop-opacity="0"/></radialGradient>
+                      <radialGradient id="steamglow" cx="50%" cy="80%" r="60%"><stop offset="0%" stop-color="#D4884A" stop-opacity="0.22"/><stop offset="100%" stop-color="#D4884A" stop-opacity="0"/></radialGradient>
+                      <filter id="blur1"><feGaussianBlur stdDeviation="2.5"/></filter>
+                      <filter id="blur2"><feGaussianBlur stdDeviation="1.2"/></filter>
+                    </defs>
+                    <rect width="181" height="322" fill="url(#rg1)"/>
+
+                    <!-- subtle bokeh lights in background -->
+                    <circle cx="22" cy="55" r="18" fill="#4A1E00" opacity="0.35" filter="url(#blur1)"/>
+                    <circle cx="155" cy="40" r="14" fill="#3D1800" opacity="0.3" filter="url(#blur1)"/>
+                    <circle cx="168" cy="120" r="10" fill="#5C2A00" opacity="0.25" filter="url(#blur1)"/>
+                    <circle cx="15" cy="160" r="12" fill="#3D1800" opacity="0.2" filter="url(#blur1)"/>
+
+                    <!-- wooden table surface - occupies lower half -->
+                    <rect x="0" y="185" width="181" height="137" fill="#0E0600" opacity="0.98"/>
+                    <line x1="0" y1="185" x2="181" y2="185" stroke="#3D1800" stroke-width="1.5" opacity="0.5"/>
+                    <!-- wood grain lines -->
+                    <path d="M0 194 Q35 191 80 196 Q120 201 181 194" stroke="#1A0900" stroke-width="1.2" fill="none" opacity="0.7"/>
+                    <path d="M0 208 Q45 205 90 210 Q135 215 181 208" stroke="#1A0900" stroke-width="0.9" fill="none" opacity="0.55"/>
+                    <path d="M0 225 Q55 222 100 227 Q145 232 181 225" stroke="#1A0900" stroke-width="0.7" fill="none" opacity="0.4"/>
+                    <path d="M0 246 Q40 243 85 248 Q130 253 181 246" stroke="#1A0900" stroke-width="0.6" fill="none" opacity="0.3"/>
+                    <!-- table edge highlight -->
+                    <line x1="0" y1="186" x2="181" y2="186" stroke="#5C2E00" stroke-width="0.6" opacity="0.4"/>
+
+                    <!-- saucer - ellipse on table -->
+                    <ellipse cx="88" cy="207" rx="60" ry="11" fill="#160800" opacity="0.95"/>
+                    <ellipse cx="88" cy="205" rx="56" ry="9" fill="#241000" opacity="0.85"/>
+                    <!-- saucer rim highlight -->
+                    <path d="M36 203 Q88 198 140 203" stroke="#3D1800" stroke-width="1" fill="none" opacity="0.5"/>
+
+                    <!-- cup glow on table -->
+                    <ellipse cx="88" cy="198" rx="65" ry="45" fill="url(#cupglow)"/>
+
+                    <!-- cup body - realistic tapered espresso/cappuccino -->
+                    <path d="M56 138 Q53 205 88 207 Q123 205 120 138 Z" fill="#1A0800"/>
+                    <!-- cup body shading - lighter left side -->
+                    <path d="M56 138 Q54 175 60 200 Q68 207 88 207 Q60 190 58 155 Z" fill="#2A1000" opacity="0.5"/>
+                    <!-- cup outer stroke -->
+                    <path d="M56 138 Q53 205 88 207 Q123 205 120 138 Z" fill="none" stroke="#3D1A00" stroke-width="1.2"/>
+                    <!-- cup rim top ellipse -->
+                    <ellipse cx="88" cy="140" rx="32" ry="5.5" fill="#1A0800"/>
+                    <path d="M57 138 Q88 133 119 138" stroke="#3D1A00" stroke-width="1.5" fill="none"/>
+
+                    <!-- handle - right side -->
+                    <path d="M120 155 Q148 155 148 175 Q148 197 120 197" fill="none" stroke="#3D1A00" stroke-width="7" stroke-linecap="round"/>
+                    <path d="M120 155 Q145 155 145 175 Q145 195 120 195" fill="none" stroke="#1A0800" stroke-width="4" stroke-linecap="round"/>
+                    <!-- handle highlight -->
+                    <path d="M120 158 Q140 158 140 175 Q140 192 120 192" fill="none" stroke="#4A2200" stroke-width="1.5" stroke-linecap="round" opacity="0.6"/>
+
+                    <!-- coffee surface - top of cup -->
+                    <ellipse cx="88" cy="141" rx="30" ry="4.5" fill="#3D1800"/>
+                    <!-- cream/foam layer -->
+                    <ellipse cx="88" cy="140" rx="28.5" ry="4" fill="#C8793A" opacity="0.55"/>
+                    <!-- latte art - classic rosetta/heart -->
+                    <!-- heart shape -->
+                    <path d="M82 139 Q83.5 135.5 86 138 Q88 135 90.5 138 Q87.5 143 88 145 Q85 143 82 139Z" fill="#4A2000" opacity="0.7"/>
+                    <!-- foam highlight -->
+                    <path d="M72 141 Q80 138 88 139 Q96 138 104 141" stroke="rgba(255,255,255,0.08)" stroke-width="1.5" fill="none"/>
+
+                    <!-- steam wisps - organic curves -->
+                    <path d="M76 126 Q70 114 76 102 Q82 90 76 78" stroke="rgba(255,255,255,0.12)" stroke-width="2.8" fill="none" stroke-linecap="round"/>
+                    <path d="M88 121 Q82 108 88 95 Q94 82 88 69" stroke="rgba(255,255,255,0.09)" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+                    <path d="M100 126 Q106 113 100 101 Q94 89 100 77" stroke="rgba(255,255,255,0.07)" stroke-width="2.2" fill="none" stroke-linecap="round"/>
+                    <!-- steam soft glow -->
+                    <ellipse cx="88" cy="108" rx="38" ry="25" fill="url(#steamglow)"/>
+
+                    <!-- cacao beans on table -->
+                    <g transform="rotate(22,34,220)">
+                      <ellipse cx="34" cy="220" rx="12" ry="7.5" fill="#5C2E00" opacity="0.9"/>
+                      <ellipse cx="34" cy="220" rx="10.5" ry="6" fill="none" stroke="#7A3A00" stroke-width="0.8"/>
+                      <line x1="34" y1="213" x2="34" y2="227" stroke="#7A3A00" stroke-width="0.8" opacity="0.55"/>
+                    </g>
+                    <g transform="rotate(-18,155,225)">
+                      <ellipse cx="155" cy="225" rx="11" ry="7" fill="#4A2500" opacity="0.85"/>
+                      <ellipse cx="155" cy="225" rx="9.5" ry="5.5" fill="none" stroke="#6B3200" stroke-width="0.8"/>
+                      <line x1="155" y1="218" x2="155" y2="232" stroke="#6B3200" stroke-width="0.8" opacity="0.5"/>
+                    </g>
+                    <g transform="rotate(35,60,252)">
+                      <ellipse cx="60" cy="252" rx="9.5" ry="6" fill="#5C2E00" opacity="0.75"/>
+                      <line x1="60" y1="246" x2="60" y2="258" stroke="#7A3A00" stroke-width="0.7" opacity="0.45"/>
+                    </g>
+                    <g transform="rotate(-8,148,260)">
+                      <ellipse cx="148" cy="260" rx="8" ry="5" fill="#4A2500" opacity="0.65"/>
+                    </g>
+
+                    <!-- chocolate square with grid detail -->
+                    <g transform="rotate(10,145,250)">
+                      <rect x="133" y="240" width="24" height="24" rx="3" fill="#2E1200" opacity="0.95"/>
+                      <rect x="133" y="240" width="24" height="24" rx="3" fill="none" stroke="#4A2000" stroke-width="0.8"/>
+                      <line x1="133" y1="248" x2="157" y2="248" stroke="#4A2000" stroke-width="0.8" opacity="0.6"/>
+                      <line x1="133" y1="256" x2="157" y2="256" stroke="#4A2000" stroke-width="0.8" opacity="0.6"/>
+                      <line x1="141" y1="240" x2="141" y2="264" stroke="#4A2000" stroke-width="0.8" opacity="0.6"/>
+                      <line x1="149" y1="240" x2="149" y2="264" stroke="#4A2000" stroke-width="0.8" opacity="0.6"/>
+                      <!-- shine on chocolate -->
+                      <rect x="135" y="242" width="8" height="2" rx="1" fill="#fff" opacity="0.06"/>
+                    </g>
+
+                    <!-- spoon on saucer -->
+                    <path d="M50 208 Q70 204 95 207" stroke="#5C4020" stroke-width="2" fill="none" stroke-linecap="round" opacity="0.7"/>
+                    <ellipse cx="50" cy="208" rx="5" ry="3" fill="#5C4020" opacity="0.7"/>
+
+                    <!-- ambient warm glow under cup -->
+                    <ellipse cx="88" cy="200" rx="70" ry="30" fill="#C87941" opacity="0.05"/>
+                  </svg>
+                </div>
+                                <div class="ig-statusbar">
+                  <span class="ig-statusbar-time">9:41</span>
+                  <div class="ig-statusbar-icons">
+                    <svg width="12" height="9" viewBox="0 0 12 9" fill="#fff"><path d="M0 3h2v6H0zm3-2h2v8H3zm3-1h2v9H6zm3 0h2v9H9z" opacity="0.4"/><path d="M0 3h2v6H0zm3-2h2v8H3zm3-1h2v9H6z"/></svg>
+                    <svg width="10" height="9" viewBox="0 0 10 9" fill="#fff"><path d="M5 1.5C3.1 1.5 1.4 2.3 0.2 3.6L1.6 5C2.5 4 3.7 3.5 5 3.5s2.5.5 3.4 1.5l1.4-1.4C8.6 2.3 6.9 1.5 5 1.5z" opacity="0.4"/><path d="M5 4.5c-.8 0-1.6.3-2.1.9L4.3 7c.2-.2.4-.3.7-.3s.5.1.7.3l1.4-1.6C6.6 4.8 5.8 4.5 5 4.5z"/></svg>
+                    <svg width="18" height="9" viewBox="0 0 18 9" fill="#fff"><rect x="0.5" y="0.5" width="15" height="8" rx="2.5" stroke="#fff" stroke-opacity="0.35" fill="none"/><rect x="1" y="1" width="11" height="7" rx="2" fill="#fff"/><path d="M16.5 3v3c.8-.4.8-2.6 0-3z"/></svg>
+                  </div>
+                </div>
+                <div class="ig-stories-bar"><div class="ig-sbar"><div class="ig-sbar-fill" style="width:50%"></div></div><div class="ig-sbar"></div><div class="ig-sbar"></div></div>
+                                <div class="ig-userrow">
+                  <div class="ig-ava-wrap"><div class="ig-ava-inner" style="background:linear-gradient(135deg,#8B4513,#D2691E);">PC</div></div>
+                  <span class="ig-uname">purachocolade.nl</span>
+                  <span class="ig-morebt">&#xB7;&#xB7;&#xB7;</span>
+                </div>
+                <div style="position:absolute;top:50%;left:50%;transform:translate(-50%,-58%);text-align:center;z-index:10;width:80%;">
+                  <div style="font-size:9px;letter-spacing:3px;color:rgba(200,121,65,0.9);text-transform:uppercase;margin-bottom:10px;">Puur &amp; eerlijk</div>
+                  <div style="font-family:'Fraunces',serif;font-size:32px;font-weight:700;color:#fff;line-height:1.05;margin-bottom:6px;text-shadow:0 2px 8px rgba(0,0,0,0.4);">100%<br>Natuurlijk</div>
+                  <div style="width:28px;height:1px;background:rgba(200,121,65,0.5);margin:10px auto;"></div>
+                  <div style="font-size:8px;letter-spacing:2px;color:rgba(255,255,255,0.5);text-transform:uppercase;">PURA CHOCOLADE</div>
+                </div>
+                                <div class="ig-right-actions">
+                  <div class="ig-btn">
+                    <svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.2" stroke-linecap="round"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+                    <span class="ig-btn-label">2.847</span>
+                  </div>
+                  <div class="ig-btn">
+                    <svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.2" stroke-linecap="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+                    <span class="ig-btn-label">94</span>
+                  </div>
+                  <div class="ig-btn">
+                    <svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.2" stroke-linecap="round"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
+                    <span class="ig-btn-label">Delen</span>
+                  </div>
+                  <div class="ig-btn">
+                    <svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.2" stroke-linecap="round"><path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"/></svg>
+                    <span class="ig-btn-label"></span>
+                  </div>
+                </div>
+                                <div class="ig-caption-area">
+                  <div class="ig-cap-user">purachocolade.nl</div>
+                  <div class="ig-cap-text">Eerlijke chocolade, recht van de bron. &#x1F36B; Ontdek het verhaal.</div>
+                </div>
+                <div class="ig-music-bar">
+                  <div class="ig-music-disc"></div>
+                </div>
+                                <div class="ig-navbar">
+                  <div class="ig-nb-btn"><svg width="20" height="20" viewBox="0 0 24 24" fill="#fff" stroke="none"><path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"/></svg></div>
+                  <div class="ig-nb-btn"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.7)" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg></div>
+                  <div class="ig-nb-btn"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.7)" stroke-width="2"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/></svg></div>
+                  <div class="ig-nb-btn ig-nb-active"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.2"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="#fff" stroke="none"/></svg></div>
+                  <div class="ig-nb-btn"><div class="ig-nb-avatar"></div></div>
+                </div>
+                <div class="tap-l" onclick="slideNav('r1',1,-1)"></div>
+                <div class="tap-r" onclick="slideNav('r1',1,1)"></div>
+              </div>
+
+                            <!-- SLIDE 2: Bean to bar -->
+              <div class="ig-reel" id="r1-s2" style="display:none;">
+                <div class="ig-reel-bg">
+                  <svg viewBox="0 0 181 322" xmlns="http://www.w3.org/2000/svg" style="position:absolute;inset:0;width:100%;height:100%">
+                    <defs><radialGradient id="rg2" cx="50%" cy="50%" r="70%"><stop offset="0%" stop-color="#3D1800"/><stop offset="100%" stop-color="#0D0500"/></radialGradient></defs>
+                    <rect width="181" height="322" fill="url(#rg2)"/>
+                    <g transform="rotate(-20,70,160)"><ellipse cx="70" cy="160" rx="28" ry="18" fill="#5C2E00"/><ellipse cx="70" cy="160" rx="26" ry="16" fill="none" stroke="#7A3A00" stroke-width="1"/><line x1="70" y1="144" x2="70" y2="176" stroke="#7A3A00" stroke-width="1" opacity="0.6"/><line x1="57" y1="153" x2="83" y2="167" stroke="#7A3A00" stroke-width="0.8" opacity="0.4"/></g>
+                    <g transform="rotate(15,130,90)"><ellipse cx="130" cy="90" rx="24" ry="15" fill="#4A2500"/><ellipse cx="130" cy="90" rx="22" ry="13" fill="none" stroke="#6B3200" stroke-width="1"/><line x1="130" y1="77" x2="130" y2="103" stroke="#6B3200" stroke-width="1" opacity="0.6"/></g>
+                    <g transform="rotate(-35,140,240)"><ellipse cx="140" cy="240" rx="26" ry="16" fill="#5C2E00"/><ellipse cx="140" cy="240" rx="24" ry="14" fill="none" stroke="#7A3A00" stroke-width="1"/><line x1="140" y1="226" x2="140" y2="254" stroke="#7A3A00" stroke-width="1" opacity="0.5"/></g>
+                    <g transform="rotate(25,35,278)"><ellipse cx="35" cy="278" rx="18" ry="11" fill="#4A2500" opacity="0.9"/><line x1="35" y1="267" x2="35" y2="289" stroke="#6B3200" stroke-width="0.8" opacity="0.5"/></g>
+                    <g transform="rotate(-10,40,55)"><ellipse cx="40" cy="55" rx="20" ry="12" fill="#3D1800" opacity="0.85"/><line x1="40" y1="43" x2="40" y2="67" stroke="#5C2E00" stroke-width="0.8" opacity="0.5"/></g>
+                    <g transform="rotate(40,165,190)"><ellipse cx="165" cy="190" rx="15" ry="9" fill="#4A2500" opacity="0.7"/></g>
+                    <ellipse cx="90" cy="161" rx="70" ry="80" fill="#8B4513" opacity="0.08"/>
+                    <path d="M162 25 Q178 40 165 58 Q170 40 162 25Z" fill="#2A5C1A" opacity="0.5"/>
+                    <path d="M162 25 L165 58" stroke="#1E4A14" stroke-width="0.8" opacity="0.4"/>
+                  </svg>
+                </div>
+                                <div class="ig-statusbar">
+                  <span class="ig-statusbar-time">9:41</span>
+                  <div class="ig-statusbar-icons">
+                    <svg width="12" height="9" viewBox="0 0 12 9" fill="#fff"><path d="M0 3h2v6H0zm3-2h2v8H3zm3-1h2v9H6zm3 0h2v9H9z" opacity="0.4"/><path d="M0 3h2v6H0zm3-2h2v8H3zm3-1h2v9H6z"/></svg>
+                    <svg width="10" height="9" viewBox="0 0 10 9" fill="#fff"><path d="M5 1.5C3.1 1.5 1.4 2.3 0.2 3.6L1.6 5C2.5 4 3.7 3.5 5 3.5s2.5.5 3.4 1.5l1.4-1.4C8.6 2.3 6.9 1.5 5 1.5z" opacity="0.4"/><path d="M5 4.5c-.8 0-1.6.3-2.1.9L4.3 7c.2-.2.4-.3.7-.3s.5.1.7.3l1.4-1.6C6.6 4.8 5.8 4.5 5 4.5z"/></svg>
+                    <svg width="18" height="9" viewBox="0 0 18 9" fill="#fff"><rect x="0.5" y="0.5" width="15" height="8" rx="2.5" stroke="#fff" stroke-opacity="0.35" fill="none"/><rect x="1" y="1" width="11" height="7" rx="2" fill="#fff"/><path d="M16.5 3v3c.8-.4.8-2.6 0-3z"/></svg>
+                  </div>
+                </div>
+                <div class="ig-stories-bar"><div class="ig-sbar"><div class="ig-sbar-fill" style="width:100%"></div></div><div class="ig-sbar"><div class="ig-sbar-fill" style="width:50%"></div></div><div class="ig-sbar"></div></div>
+                                <div class="ig-userrow">
+                  <div class="ig-ava-wrap"><div class="ig-ava-inner" style="background:linear-gradient(135deg,#8B4513,#D2691E);">PC</div></div>
+                  <span class="ig-uname">purachocolade.nl</span>
+                  
+                  <span class="ig-morebt">&#xB7;&#xB7;&#xB7;</span>
+                </div>
+                <div style="position:absolute;top:50%;left:50%;transform:translate(-50%,-55%);text-align:center;z-index:10;width:85%;">
+                  <div style="font-family:'Fraunces',serif;font-size:26px;font-weight:700;color:#F2C97A;line-height:1.1;margin-bottom:8px;text-shadow:0 2px 8px rgba(0,0,0,0.4);">Bean to bar.<br><span style="font-style:italic;font-size:20px;color:#fff;">Eerlijk &amp; puur.</span></div>
+                  <div style="width:32px;height:1px;background:rgba(242,201,122,0.4);margin:10px auto;"></div>
+                  <div style="font-size:10px;color:rgba(255,255,255,0.78);line-height:1.65;">Van cacaoboon tot reep &mdash;<br>transparant en fair trade.</div>
+                </div>
+                                <div class="ig-right-actions">
+                  <div class="ig-btn">
+                    <svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.2" stroke-linecap="round"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+                    <span class="ig-btn-label">2.847</span>
+                  </div>
+                  <div class="ig-btn">
+                    <svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.2" stroke-linecap="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+                    <span class="ig-btn-label">94</span>
+                  </div>
+                  <div class="ig-btn">
+                    <svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.2" stroke-linecap="round"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
+                    <span class="ig-btn-label">Delen</span>
+                  </div>
+                  <div class="ig-btn">
+                    <svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.2" stroke-linecap="round"><path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"/></svg>
+                    <span class="ig-btn-label"></span>
+                  </div>
+                </div>
+                                <div class="ig-caption-area">
+                  <div class="ig-cap-user">purachocolade.nl</div>
+                  <div class="ig-cap-text">Eerlijk &amp; puur. Recht van de bron. &#x1F36B;</div>
+                </div>
+                <div class="ig-music-bar">
+                  <div class="ig-music-disc"></div>
+                </div>
+                                <div class="ig-navbar">
+                  <div class="ig-nb-btn"><svg width="20" height="20" viewBox="0 0 24 24" fill="#fff" stroke="none"><path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"/></svg></div>
+                  <div class="ig-nb-btn"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.7)" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg></div>
+                  <div class="ig-nb-btn"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.7)" stroke-width="2"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/></svg></div>
+                  <div class="ig-nb-btn ig-nb-active"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.2"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="#fff" stroke="none"/></svg></div>
+                  <div class="ig-nb-btn"><div class="ig-nb-avatar"></div></div>
+                </div>
+                <div class="tap-l" onclick="slideNav('r1',2,-1)"></div>
+                <div class="tap-r" onclick="slideNav('r1',2,1)"></div>
+              </div>
+
+                            <!-- SLIDE 3 -->
+              <div class="ig-reel" id="r1-s3" style="display:none;">
+                <div class="ig-reel-bg">
+                  <svg viewBox="0 0 181 322" xmlns="http://www.w3.org/2000/svg" style="position:absolute;inset:0;width:100%;height:100%">
+                    <rect width="181" height="322" fill="#0A0500"/>
+                    <circle cx="90" cy="120" r="65" fill="#1A0A00"/>
+                    <circle cx="90" cy="120" r="40" fill="#2C1500" opacity="0.6"/>
+                    <circle cx="30" cy="40" r="1" fill="#fff" opacity="0.7"/>
+                    <circle cx="160" cy="20" r="1.5" fill="#fff" opacity="0.8"/>
+                    <circle cx="170" cy="60" r="1" fill="#fff" opacity="0.5"/>
+                    <circle cx="15" cy="80" r="1" fill="#fff" opacity="0.6"/>
+                  </svg>
+                </div>
+                                <div class="ig-statusbar">
+                  <span class="ig-statusbar-time">9:41</span>
+                  <div class="ig-statusbar-icons">
+                    <svg width="12" height="9" viewBox="0 0 12 9" fill="#fff"><path d="M0 3h2v6H0zm3-2h2v8H3zm3-1h2v9H6zm3 0h2v9H9z" opacity="0.4"/><path d="M0 3h2v6H0zm3-2h2v8H3zm3-1h2v9H6z"/></svg>
+                    <svg width="10" height="9" viewBox="0 0 10 9" fill="#fff"><path d="M5 1.5C3.1 1.5 1.4 2.3 0.2 3.6L1.6 5C2.5 4 3.7 3.5 5 3.5s2.5.5 3.4 1.5l1.4-1.4C8.6 2.3 6.9 1.5 5 1.5z" opacity="0.4"/><path d="M5 4.5c-.8 0-1.6.3-2.1.9L4.3 7c.2-.2.4-.3.7-.3s.5.1.7.3l1.4-1.6C6.6 4.8 5.8 4.5 5 4.5z"/></svg>
+                    <svg width="18" height="9" viewBox="0 0 18 9" fill="#fff"><rect x="0.5" y="0.5" width="15" height="8" rx="2.5" stroke="#fff" stroke-opacity="0.35" fill="none"/><rect x="1" y="1" width="11" height="7" rx="2" fill="#fff"/><path d="M16.5 3v3c.8-.4.8-2.6 0-3z"/></svg>
+                  </div>
+                </div>
+                <div class="ig-stories-bar"><div class="ig-sbar"><div class="ig-sbar-fill" style="width:100%"></div></div><div class="ig-sbar"><div class="ig-sbar-fill" style="width:100%"></div></div><div class="ig-sbar"><div class="ig-sbar-fill" style="width:50%"></div></div></div>
+                                <div class="ig-userrow">
+                  <div class="ig-ava-wrap"><div class="ig-ava-inner" style="background:linear-gradient(135deg,#8B4513,#D2691E);">PC</div></div>
+                  <span class="ig-uname">purachocolade.nl</span>
+                  
+                  <span class="ig-morebt">&#xB7;&#xB7;&#xB7;</span>
+                </div>
+                <div style="position:absolute;top:42%;left:50%;transform:translate(-50%,-50%);text-align:center;z-index:10;width:78%;display:flex;flex-direction:column;align-items:center;gap:10px;">
+                  <div style="font-size:9px;text-transform:uppercase;letter-spacing:2.5px;color:#F2C97A;">Bestel nu</div>
+                  <div style="font-family:'Fraunces',serif;font-size:22px;font-weight:700;color:#fff;line-height:1.15;text-shadow:0 2px 8px rgba(0,0,0,0.5);">Proef het verschil</div>
+                  <div style="background:#F2C97A;color:#0a0500;border-radius:8px;padding:10px 14px;font-size:10px;font-weight:700;width:100%;letter-spacing:0.3px;">PURACHOCOLADE.NL</div>
+                </div>
+                                <div class="ig-right-actions">
+                  <div class="ig-btn">
+                    <svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.2" stroke-linecap="round"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+                    <span class="ig-btn-label">2.847</span>
+                  </div>
+                  <div class="ig-btn">
+                    <svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.2" stroke-linecap="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+                    <span class="ig-btn-label">94</span>
+                  </div>
+                  <div class="ig-btn">
+                    <svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.2" stroke-linecap="round"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
+                    <span class="ig-btn-label">Delen</span>
+                  </div>
+                  <div class="ig-btn">
+                    <svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.2" stroke-linecap="round"><path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"/></svg>
+                    <span class="ig-btn-label"></span>
+                  </div>
+                </div>
+                                <div class="ig-caption-area">
+                  <div class="ig-cap-user">purachocolade.nl</div>
+                  <div class="ig-cap-text">Link in bio &#x1F36B;</div>
+                </div>
+                <div class="ig-music-bar">
+                  <div class="ig-music-disc"></div>
+                </div>
+                                <div class="ig-navbar">
+                  <div class="ig-nb-btn"><svg width="20" height="20" viewBox="0 0 24 24" fill="#fff" stroke="none"><path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"/></svg></div>
+                  <div class="ig-nb-btn"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.7)" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg></div>
+                  <div class="ig-nb-btn"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.7)" stroke-width="2"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/></svg></div>
+                  <div class="ig-nb-btn ig-nb-active"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.2"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="#fff" stroke="none"/></svg></div>
+                  <div class="ig-nb-btn"><div class="ig-nb-avatar"></div></div>
+                </div>
+                <div class="tap-l" onclick="slideNav('r1',3,-1)"></div>
+                <div class="tap-r" onclick="slideNav('r1',3,1)"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="mockup-label">
+          <strong>Instagram Reel</strong>
+          <span>Pura Chocolade &mdash; duurzame chocolade</span>
+        </div>
+      </div>
+
+      <!-- 2: Instagram Story – TalentWorks -->
+      <div class="mockup-wrap">
+        <div class="iphone">
+          <div class="iphone-notch"><div class="iphone-island"></div></div>
+          <div class="iphone-screen">
+            <div style="position:relative;">
+
+              <!-- STORY 1: Intro -->
+              <div class="ig-story" id="r2-s1">
+                <div class="ig-story-bg">
+                  <svg viewBox="0 0 181 322" xmlns="http://www.w3.org/2000/svg" style="position:absolute;inset:0;width:100%;height:100%">
+                    <defs><linearGradient id="sg1" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#0D1B2A"/><stop offset="60%" stop-color="#1A2E45"/><stop offset="100%" stop-color="#0A1E35"/></linearGradient></defs>
+                    <rect width="181" height="322" fill="url(#sg1)"/>
+                    <ellipse cx="65" cy="210" rx="18" ry="18" fill="rgba(255,255,255,0.06)"/>
+                    <rect x="50" y="226" width="30" height="50" rx="6" fill="rgba(255,255,255,0.06)"/>
+                    <ellipse cx="116" cy="205" rx="18" ry="18" fill="rgba(255,255,255,0.08)"/>
+                    <rect x="101" y="221" width="30" height="55" rx="6" fill="rgba(255,255,255,0.08)"/>
+                    <rect x="20" y="275" width="141" height="5" rx="2" fill="rgba(255,255,255,0.1)"/>
+                    <circle cx="25" cy="35" r="1" fill="#fff" opacity="0.7"/>
+                    <circle cx="155" cy="22" r="1.5" fill="#fff" opacity="0.85"/>
+                    <circle cx="80" cy="18" r="1" fill="#fff" opacity="0.5"/>
+                    <circle cx="168" cy="55" r="1" fill="#fff" opacity="0.6"/>
+                    <circle cx="12" cy="65" r="1.5" fill="#fff" opacity="0.4"/>
+                    <circle cx="140" cy="40" r="1" fill="#fff" opacity="0.65"/>
+                  </svg>
+                </div>
+                                <div class="ig-story-statusbar">
+                  <span class="ig-statusbar-time" style="color:#fff;font-size:9px;font-weight:700;">9:41</span>
+                  <div class="ig-statusbar-icons">
+                    <svg width="12" height="9" viewBox="0 0 12 9" fill="#fff"><path d="M0 3h2v6H0zm3-2h2v8H3zm3-1h2v9H6zm3 0h2v9H9z" opacity="0.4"/><path d="M0 3h2v6H0zm3-2h2v8H3zm3-1h2v9H6z"/></svg>
+                    <svg width="18" height="9" viewBox="0 0 18 9" fill="#fff"><rect x="0.5" y="0.5" width="15" height="8" rx="2.5" stroke="#fff" stroke-opacity="0.35" fill="none"/><rect x="1" y="1" width="11" height="7" rx="2" fill="#fff"/><path d="M16.5 3v3c.8-.4.8-2.6 0-3z"/></svg>
+                  </div>
+                </div>
+                <div class="ig-story-progbars"><div class="ig-sbar"><div class="ig-sbar-fill" style="width:40%"></div></div><div class="ig-sbar"></div><div class="ig-sbar"></div></div>
+                                <div class="ig-story-userrow">
+                  <div class="ig-ava-wrap"><div class="ig-ava-inner" style="background:linear-gradient(135deg,#C0392B,#E74C3C);">TW</div></div>
+                  <span class="ig-uname">TalentWorks</span>
+                  <span style="color:rgba(255,255,255,0.5);font-size:9px;margin-left:2px;">2u</span>
+                  <span class="ig-morebt" style="margin-left:auto;">&#xB7;&#xB7;&#xB7;</span>
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.8)" stroke-width="2.5"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+                </div>
+                <div style="position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);text-align:center;z-index:10;width:80%;">
+                  <div style="font-size:9px;letter-spacing:3px;color:rgba(255,255,255,0.4);text-transform:uppercase;margin-bottom:12px;">Wij zoeken talent</div>
+                  <div style="font-family:'Fraunces',serif;font-size:34px;font-weight:700;color:#fff;line-height:1.05;margin-bottom:10px;text-shadow:0 2px 8px rgba(0,0,0,0.4);">Wij zijn<br><span style="color:#FF6B35;font-style:italic;">op zoek.</span></div>
+                  <div style="width:28px;height:1px;background:rgba(255,107,53,0.4);margin:10px auto;"></div>
+                  <div style="font-size:10px;color:rgba(255,255,255,0.55);line-height:1.6;">Open posities in<br>Amsterdam &amp; Rotterdam</div>
+                </div>
+                                <div class="ig-story-replybar">
+                  <div class="ig-story-input">Stuur een bericht...</div>
+                  <span class="ig-story-icon" style="font-size:18px;">&#x1F90D;</span>
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.85)" stroke-width="2" class="ig-story-icon"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
+                </div>
+                <div class="tap-l" onclick="slideNav('r2',1,-1)"></div>
+                <div class="tap-r" onclick="slideNav('r2',1,1)"></div>
+              </div>
+
+              <!-- STORY 2: Vacatures (was slide 3) -->
+              <div class="ig-story" id="r2-s2" style="display:none;">
+                <div class="ig-story-bg">
+                  <svg viewBox="0 0 181 322" xmlns="http://www.w3.org/2000/svg" style="position:absolute;inset:0;width:100%;height:100%">
+                    <defs><linearGradient id="sg3" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#0D1B2A"/><stop offset="100%" stop-color="#0A1E35"/></linearGradient></defs>
+                    <rect width="181" height="322" fill="url(#sg3)"/>
+                    <circle cx="155" cy="22" r="1.5" fill="#fff" opacity="0.7"/>
+                    <circle cx="30" cy="45" r="1" fill="#fff" opacity="0.5"/>
+                    <circle cx="168" cy="65" r="1" fill="#fff" opacity="0.6"/>
+                  </svg>
+                </div>
+                                <div class="ig-story-statusbar">
+                  <span class="ig-statusbar-time" style="color:#fff;font-size:9px;font-weight:700;">9:41</span>
+                  <div class="ig-statusbar-icons">
+                    <svg width="12" height="9" viewBox="0 0 12 9" fill="#fff"><path d="M0 3h2v6H0zm3-2h2v8H3zm3-1h2v9H6zm3 0h2v9H9z" opacity="0.4"/><path d="M0 3h2v6H0zm3-2h2v8H3zm3-1h2v9H6z"/></svg>
+                    <svg width="18" height="9" viewBox="0 0 18 9" fill="#fff"><rect x="0.5" y="0.5" width="15" height="8" rx="2.5" stroke="#fff" stroke-opacity="0.35" fill="none"/><rect x="1" y="1" width="11" height="7" rx="2" fill="#fff"/><path d="M16.5 3v3c.8-.4.8-2.6 0-3z"/></svg>
+                  </div>
+                </div>
+                <div class="ig-story-progbars"><div class="ig-sbar"><div class="ig-sbar-fill" style="width:100%"></div></div><div class="ig-sbar"><div class="ig-sbar-fill" style="width:40%"></div></div><div class="ig-sbar"></div></div>
+                                <div class="ig-story-userrow">
+                  <div class="ig-ava-wrap"><div class="ig-ava-inner" style="background:linear-gradient(135deg,#C0392B,#E74C3C);">TW</div></div>
+                  <span class="ig-uname">TalentWorks</span>
+                  <span style="color:rgba(255,255,255,0.5);font-size:9px;margin-left:2px;">2u</span>
+                  <span class="ig-morebt" style="margin-left:auto;">&#xB7;&#xB7;&#xB7;</span>
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.8)" stroke-width="2.5"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+                </div>
+                <div style="position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);z-index:10;width:86%;display:flex;flex-direction:column;gap:8px;">
+                  <div style="font-size:9px;text-transform:uppercase;letter-spacing:1.5px;color:#FF6B35;font-weight:700;margin-bottom:2px;">Open vacatures</div>
+                  <div style="background:rgba(255,255,255,0.08);border:1px solid rgba(255,255,255,0.12);border-radius:10px;padding:10px;">
+                    <div style="color:#fff;font-size:12px;font-weight:700;margin-bottom:3px;">Marketing Manager</div>
+                    <div style="color:rgba(255,255,255,0.55);font-size:9px;line-height:1.55;">Amsterdam &middot; Hybride<br>&#x20AC;4.000 &ndash; &#x20AC;5.500 p/m</div>
+                  </div>
+                  <div style="background:rgba(255,255,255,0.08);border:1px solid rgba(255,255,255,0.12);border-radius:10px;padding:10px;">
+                    <div style="color:#fff;font-size:12px;font-weight:700;margin-bottom:3px;">UX Designer</div>
+                    <div style="color:rgba(255,255,255,0.55);font-size:9px;line-height:1.55;">Rotterdam &middot; Full remote<br>&#x20AC;3.500 &ndash; &#x20AC;4.500 p/m</div>
+                  </div>
+                  <div style="background:#C0392B;border-radius:8px;padding:9px;text-align:center;font-size:11px;font-weight:700;color:#fff;">Solliciteer direct &rarr;</div>
+                </div>
+                                <div class="ig-story-replybar">
+                  <div class="ig-story-input">Stuur een bericht...</div>
+                  <span class="ig-story-icon" style="font-size:18px;">&#x1F90D;</span>
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.85)" stroke-width="2" class="ig-story-icon"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
+                </div>
+                <div class="tap-l" onclick="slideNav('r2',2,-1)"></div>
+                <div class="tap-r" onclick="slideNav('r2',2,1)"></div>
+              </div>
+
+              <!-- STORY 3: Solliciteer NU (was slide 2) -->
+              <div class="ig-story" id="r2-s3" style="display:none;">
+                <div class="ig-story-bg">
+                  <svg viewBox="0 0 181 322" xmlns="http://www.w3.org/2000/svg" style="position:absolute;inset:0;width:100%;height:100%">
+                    <rect width="181" height="322" fill="#080808"/>
+                    <circle cx="25" cy="35" r="1" fill="#fff" opacity="0.7"/>
+                    <circle cx="155" cy="22" r="1.5" fill="#fff" opacity="0.85"/>
+                    <circle cx="80" cy="18" r="1" fill="#fff" opacity="0.5"/>
+                    <circle cx="168" cy="55" r="1" fill="#fff" opacity="0.6"/>
+                    <circle cx="12" cy="65" r="1.5" fill="#fff" opacity="0.4"/>
+                    <circle cx="50" cy="50" r="1" fill="#fff" opacity="0.45"/>
+                    <circle cx="170" cy="90" r="1" fill="#fff" opacity="0.5"/>
+                  </svg>
+                </div>
+                                <div class="ig-story-statusbar">
+                  <span class="ig-statusbar-time" style="color:#fff;font-size:9px;font-weight:700;">9:41</span>
+                  <div class="ig-statusbar-icons">
+                    <svg width="12" height="9" viewBox="0 0 12 9" fill="#fff"><path d="M0 3h2v6H0zm3-2h2v8H3zm3-1h2v9H6zm3 0h2v9H9z" opacity="0.4"/><path d="M0 3h2v6H0zm3-2h2v8H3zm3-1h2v9H6z"/></svg>
+                    <svg width="18" height="9" viewBox="0 0 18 9" fill="#fff"><rect x="0.5" y="0.5" width="15" height="8" rx="2.5" stroke="#fff" stroke-opacity="0.35" fill="none"/><rect x="1" y="1" width="11" height="7" rx="2" fill="#fff"/><path d="M16.5 3v3c.8-.4.8-2.6 0-3z"/></svg>
+                  </div>
+                </div>
+                <div class="ig-story-progbars"><div class="ig-sbar"><div class="ig-sbar-fill" style="width:100%"></div></div><div class="ig-sbar"><div class="ig-sbar-fill" style="width:100%"></div></div><div class="ig-sbar"><div class="ig-sbar-fill" style="width:40%"></div></div></div>
+                                <div class="ig-story-userrow">
+                  <div class="ig-ava-wrap"><div class="ig-ava-inner" style="background:linear-gradient(135deg,#C0392B,#E74C3C);">TW</div></div>
+                  <span class="ig-uname">TalentWorks</span>
+                  <span style="color:rgba(255,255,255,0.5);font-size:9px;margin-left:2px;">2u</span>
+                  <span class="ig-morebt" style="margin-left:auto;">&#xB7;&#xB7;&#xB7;</span>
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.8)" stroke-width="2.5"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+                </div>
+                <div style="position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);text-align:center;z-index:10;width:82%;display:flex;flex-direction:column;align-items:center;gap:6px;">
+                  <div style="font-size:9px;text-transform:uppercase;letter-spacing:2px;color:rgba(255,255,255,0.35);margin-bottom:4px;">Plaats een reactie</div>
+                  <div style="font-family:'Fraunces',serif;font-size:26px;font-weight:700;color:#fff;line-height:1.05;margin-bottom:4px;letter-spacing:-0.5px;">SOLLICITEER<br>NU.</div>
+                  <div style="font-size:10px;color:rgba(255,255,255,0.45);margin-bottom:2px;">Stuur motivatie + CV naar:</div>
+                  <div style="font-size:11px;color:#fff;font-weight:600;margin-bottom:10px;">jobs@talentworks.nl</div>
+                  <div style="background:#E8C840;color:#080808;border-radius:8px;padding:9px 12px;font-size:10px;font-weight:700;width:100%;text-align:center;">REAGEER VOOR 7 JUNI 2024</div>
+                </div>
+                                <div class="ig-story-replybar">
+                  <div class="ig-story-input">Stuur een bericht...</div>
+                  <span class="ig-story-icon" style="font-size:18px;">&#x1F90D;</span>
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.85)" stroke-width="2" class="ig-story-icon"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
+                </div>
+                <div class="tap-l" onclick="slideNav('r2',3,-1)"></div>
+                <div class="tap-r" onclick="slideNav('r2',3,1)"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="mockup-label">
+          <strong>Instagram Story</strong>
+          <span>TalentWorks &mdash; wervingscampagne</span>
+        </div>
+      </div>
+
+      <!-- 3: Facebook Ad – VakPlus Klussen -->
+      <div class="mockup-wrap">
+        <div class="fb-phone">
+          <div class="fb-screen" style="max-height:none;overflow:hidden;">
+            <!-- FB status bar -->
+            <div class="fb-statusbar">
+              <span class="fb-sb-time">9:41</span>
+              <div class="fb-sb-icons">
+                <svg width="12" height="9" viewBox="0 0 12 9" fill="#050505"><path d="M0 3h2v6H0zm3-2h2v8H3zm3-1h2v9H6zm3 0h2v9H9z" opacity="0.3"/><path d="M0 3h2v6H0zm3-2h2v8H3zm3-1h2v9H6z"/></svg>
+                <svg width="18" height="9" viewBox="0 0 18 9" fill="#050505"><rect x="0.5" y="0.5" width="15" height="8" rx="2.5" stroke="#050505" stroke-opacity="0.35" fill="none"/><rect x="1" y="1" width="11" height="7" rx="2" fill="#050505"/><path d="M16.5 3v3c.8-.4.8-2.6 0-3z" fill="#050505"/></svg>
+              </div>
+            </div>
+            <!-- FB top nav -->
+            <div class="fb-topnav">
+              <div class="fb-logo">f</div>
+              <div class="fb-search-pill">
+                <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="#65676B" stroke-width="2.5"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+                Zoeken
+              </div>
+              <div class="fb-nav-icons">
+                <div class="fb-nav-icon"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#050505" stroke-width="2"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 0 1-3.46 0"/></svg></div>
+                <div class="fb-nav-icon"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#050505" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg></div>
+              </div>
+            </div>
+            <!-- FB tab bar -->
+            <div class="fb-tabbar">
+              <div class="fb-tab"><svg width="18" height="18" viewBox="0 0 24 24" fill="#65676B"><path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"/></svg></div>
+              <div class="fb-tab"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#65676B" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/></svg></div>
+              <div class="fb-tab fb-tab-active"><svg width="18" height="18" viewBox="0 0 24 24" fill="#1877F2"><rect x="2" y="7" width="6" height="13"/><rect x="9" y="4" width="6" height="16"/><rect x="16" y="1" width="6" height="19"/></svg></div>
+              <div class="fb-tab"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#65676B" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8m-4-4v4"/></svg></div>
+              <div class="fb-tab"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#65676B" stroke-width="2"><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="18" x2="21" y2="18"/></svg></div>
+            </div>
+
+            <!-- Post header -->
+            <div class="fb-post-header">
+              <div class="fb-page-ava" style="background:#F39C12;border-radius:6px;">VK</div>
+              <div>
+                <div class="fb-page-name">VakPlus Klussen</div>
+                <div class="fb-page-meta">Gesponsord &middot; <svg width="10" height="10" viewBox="0 0 24 24" fill="#65676B"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15 15 0 0 1 0 20M12 2a15 15 0 0 0 0 20" fill="none" stroke="#fff" stroke-width="1.5"/></svg></div>
+              </div>
+              <div class="fb-post-dots">&#xB7;&#xB7;&#xB7;</div>
+            </div>
+            <div class="fb-post-text">Klussen in en om het huis? Jij zorgt voor de koffie, wij doen de rest. Snel, netjes en eerlijk geprijsd.</div>
+
+            <!-- Image -->
+            <div class="fb-img-wrap">
+              <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+                <defs><linearGradient id="fbg1" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#2C3E50"/><stop offset="100%" stop-color="#1A2530"/></linearGradient></defs>
+                <rect width="200" height="200" fill="url(#fbg1)"/>
+                <rect x="0" y="0" width="200" height="200" fill="#E8DDD0" opacity="0.16"/>
+                <rect x="28" y="12" width="144" height="176" rx="3" fill="none" stroke="#C8B890" stroke-width="8"/>
+                <rect x="28" y="94" width="144" height="8" fill="#C8B890" opacity="0.9"/>
+                <rect x="96" y="12" width="8" height="176" fill="#C8B890" opacity="0.9"/>
+                <rect x="32" y="16" width="60" height="74" fill="#9BB5C8" opacity="0.13"/>
+                <rect x="108" y="16" width="60" height="74" fill="#9BB5C8" opacity="0.10"/>
+                <rect x="32" y="106" width="60" height="78" fill="#9BB5C8" opacity="0.08"/>
+                <rect x="108" y="106" width="60" height="78" fill="#9BB5C8" opacity="0.07"/>
+                <rect x="140" y="78" width="60" height="14" rx="7" fill="#D4956A" opacity="0.92"/>
+                <ellipse cx="140" cy="85" rx="10" ry="9" fill="#C4855A" opacity="0.95"/>
+                <rect x="98" y="82" width="46" height="6" rx="3" fill="#8B6914"/>
+                <rect x="88" y="79" width="14" height="12" rx="2" fill="#4A3A2A"/>
+                <rect x="28" y="54" width="8" height="38" rx="2" fill="#FFFFFF" opacity="0.88"/>
+                <rect x="28" y="26" width="8" height="24" rx="2" fill="#F5F0E8" opacity="0.7"/>
+                <rect x="4" y="158" width="28" height="34" rx="3" fill="#F5F0E8" opacity="0.72"/>
+                <rect x="4" y="158" width="28" height="10" rx="3" fill="#E8E0D0" opacity="0.85"/>
+                <path d="M9 158 Q18 148 28 158" fill="none" stroke="#C8B890" stroke-width="2"/>
+              </svg>
+              <div class="fb-img-txt">
+                <div style="color:#fff;font-size:18px;font-weight:700;font-family:'Fraunces',serif;line-height:1.15;text-shadow:0 1px 6px rgba(0,0,0,0.6);">Jouw huis,<br>wij doen de klus.</div>
+                <div style="color:rgba(255,255,255,0.85);font-size:9px;margin-top:4px;text-shadow:0 1px 3px rgba(0,0,0,0.5);">Betimmeringen &middot; Schilderwerk &middot; Renovatie</div>
+              </div>
+              <div style="position:absolute;bottom:7px;right:7px;background:#F39C12;color:#fff;font-size:8.5px;font-weight:700;padding:3px 8px;border-radius:4px;z-index:3;">Vrijblijvend aanvragen</div>
+            </div>
+
+            <!-- Link preview -->
+            <div class="fb-link-block">
+              <div class="fb-link-url">VAKPLUS.NL</div>
+              <div class="fb-link-ttl">VakPlus Klussen</div>
+              <div class="fb-link-desc">Gratis offerte binnen 24 uur</div>
+            </div>
+            <div class="fb-cta-row"><button class="fb-cta-pill">Offerte aanvragen</button></div>
+
+            <!-- Like bar -->
+            <div class="fb-like-bar">
+              <div style="display:flex;align-items:center;gap:4px;">
+                <div class="fb-reacts"><div class="fb-react-ico">&#x1F44D;</div><div class="fb-react-ico">&#x2764;&#xFE0F;</div><div class="fb-react-ico">&#x1F62E;</div></div>
+                <span>Jansen en 341 anderen</span>
+              </div>
+              <span>28 reacties</span>
+            </div>
+            <div class="fb-actions">
+              <button class="fb-action-btn"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 9V5a3 3 0 0 0-3-3l-4 9v11h11.28a2 2 0 0 0 2-1.7l1.38-9a2 2 0 0 0-2-2.3z"/><path d="M7 22H4a2 2 0 0 1-2-2v-7a2 2 0 0 1 2-2h3"/></svg> Vind ik leuk</button>
+              <button class="fb-action-btn"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg> Reageren</button>
+              <button class="fb-action-btn"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"/><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"/></svg> Delen</button>
+            </div>
+            <!-- FB bottom nav -->
+            <div class="fb-bottomnav">
+              <div class="fb-bnav-btn"><svg width="18" height="18" viewBox="0 0 24 24" fill="#65676B"><path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"/></svg></div>
+              <div class="fb-bnav-btn"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#65676B" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/></svg></div>
+              <div class="fb-bnav-btn fb-bnav-active"><svg width="18" height="18" viewBox="0 0 24 24" fill="#1877F2"><rect x="2" y="7" width="6" height="13"/><rect x="9" y="4" width="6" height="16"/><rect x="16" y="1" width="6" height="19"/></svg></div>
+              <div class="fb-bnav-btn"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#65676B" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8m-4-4v4"/></svg></div>
+              <div class="fb-bnav-btn"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#65676B" stroke-width="2"><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="18" x2="21" y2="18"/></svg></div>
+            </div>
+          </div>
+        </div>
+        <div class="mockup-label">
+          <strong>Facebook Advertentie</strong>
+          <span>VakPlus Klussen &mdash; B2C diensten</span>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<!-- HOW IT WORKS -->
+<section id="werkwijze" class="section">
+  <p class="section-label">Werkwijze</p>
+  <h2>Van eerste kennismaking tot aan de slag</h2>
+  <p class="section-intro">Geen gedoe, wel duidelijkheid. Zo werken we samen.</p>
+  <div class="steps">
+    <div class="step">
+      <div class="step-num">1</div>
+      <h3>Kennismaken</h3>
+      <p>Kort gesprek zonder verplichtingen. Ik luister eerst naar jouw verhaal en uitdaging.</p>
+    </div>
+    <div class="step">
+      <div class="step-num">2</div>
+      <h3>Vrijblijvende offerte</h3>
+      <p>Helder voorstel met scope, planning en prijs — geen verrassingen achteraf.</p>
+    </div>
+    <div class="step">
+      <div class="step-num">3</div>
+      <h3>Aan de slag</h3>
+      <p>Ik ga aan het werk. Je blijft op de hoogte, maar hoeft nergens in de details te duiken.</p>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact" class="contact-section">
+  <div class="contact-inner">
+    <p class="section-label">Contact</p>
+    <h2>Laten we kennismaken</h2>
+    <p>Vul het formulier in en ik neem binnen één werkdag contact met je op.</p>
+    <div class="contact-form">
+      <div class="form-grid">
+        <div class="form-group">
+          <label>Jouw naam</label>
+          <input type="text" placeholder="Naam">
+        </div>
+        <div class="form-group">
+          <label>Bedrijf</label>
+          <input type="text" placeholder="Bedrijfsnaam">
+        </div>
+        <div class="form-group">
+          <label>E-mailadres</label>
+          <input type="email" placeholder="jouw@email.nl">
+        </div>
+        <div class="form-group">
+          <label>Waar kan ik mee helpen?</label>
+          <select>
+            <option value="">Kies een dienst (optioneel)</option>
+            <option>Social media management</option>
+            <option>Social media creatie</option>
+            <option>Blogs &amp; artikelen</option>
+            <option>Weet ik nog niet / Anders</option>
+          </select>
+        </div>
+        <div class="form-group full">
+          <label>Jouw bericht</label>
+          <textarea rows="4" placeholder="Schrijf hier kort jouw situatie of vraag..."></textarea>
+        </div>
+      </div>
+      <button class="form-submit">Verstuur bericht →</button>
+      <p class="form-privacy">
+        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+        Jouw gegevens worden nooit gedeeld met derden.
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div style="max-width:1200px;margin:0 auto;padding:0 5%;width:100%;">
+    <div style="display:flex;justify-content:space-between;align-items:flex-start;flex-wrap:wrap;gap:1.5rem;margin-bottom:1.5rem;">
+      <div>
+        <div class="footer-logo" style="margin-bottom:0.4rem;">Stef van Dalen<span>.</span></div>
+        <div style="font-size:13px;color:rgba(255,255,255,0.55);line-height:1.6;">Freelance Social Media &amp; Content</div>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:0.3rem;font-size:13px;color:rgba(255,255,255,0.5);">
+        <span><span style="color:rgba(255,255,255,0.3);margin-right:6px;">KVK</span>97446785</span>
+        <span><span style="color:rgba(255,255,255,0.3);margin-right:6px;">Locatie</span>'s-Gravenhage</span>
+        <a href="mailto:communicatie.svdalen@gmail.com" style="color:rgba(255,255,255,0.6);text-decoration:none;">communicatie.svdalen@gmail.com</a>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:0.5rem;">
+        <a href="#diensten" style="font-size:13px;color:rgba(255,255,255,0.5);text-decoration:none;">Diensten</a>
+        <a href="#werk" style="font-size:13px;color:rgba(255,255,255,0.5);text-decoration:none;">Werk</a>
+        <a href="#contact" style="font-size:13px;color:rgba(255,255,255,0.5);text-decoration:none;">Contact</a>
+      </div>
+    </div>
+    <div style="border-top:1px solid rgba(255,255,255,0.08);padding-top:1rem;display:flex;justify-content:space-between;align-items:center;font-size:12px;color:rgba(255,255,255,0.3);flex-wrap:wrap;gap:0.5rem;">
+      <span>&copy; 2025 Stef van Dalen &mdash; stefvandalen.nl</span>
+      <span>Ingeschreven bij de Kamer van Koophandel</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+  // Unified slide navigation for reels and stories
+  var slideState = { r1: 1, r2: 1, r3: 1 };
+  var slideCounts = { r1: 3, r2: 3, r3: 3 };
+  var slideDisplays = { r1: 'flex', r2: 'flex', r3: 'block' };
+
+  function slideNav(reel, current, dir) {
+    var total = slideCounts[reel];
+    var next = ((current - 1 + dir + total) % total) + 1;
+    document.getElementById(reel + '-s' + current).style.display = 'none';
+    document.getElementById(reel + '-s' + next).style.display = slideDisplays[reel];
+    slideState[reel] = next;
+    // update FB dots if needed
+    if (reel === 'r3') {
+      document.querySelectorAll('#fb-dots .fb-dot').forEach(function(d) {
+        d.classList.toggle('active', parseInt(d.getAttribute('data-i')) === next - 1);
+      });
+    }
+  }
+
+  // FB dots click
+  document.querySelectorAll('#fb-dots .fb-dot').forEach(function(dot) {
+    dot.addEventListener('click', function() {
+      var target = parseInt(this.getAttribute('data-i')) + 1;
+      var current = slideState['r3'];
+      if (target === current) return;
+      document.getElementById('r3-s' + current).style.display = 'none';
+      document.getElementById('r3-s' + target).style.display = 'block';
+      slideState['r3'] = target;
+      document.querySelectorAll('#fb-dots .fb-dot').forEach(function(d) {
+        d.classList.toggle('active', parseInt(d.getAttribute('data-i')) === target - 1);
+      });
+    });
+  });
+</script>
+
+</body>
+</html>
